@@ -27,8 +27,8 @@
   <footer>
     <div class="bottom-menu">
       <div class="d-flex">
-        <p><a href="{{ route('top.show') }}">HOME</a></p>
-        <p><a href=""></a></p>
+        <p><a href="#">HOME</a></p>
+        <p><a href="#"></a></p>
       </div>
     </div>
   </footer>

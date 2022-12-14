@@ -12,3 +12,7 @@
 */
 
 Route::get('/top','PostsController@show');
+
+// Route::get('/top', function () {
+//     return view('welcome');
+// });
