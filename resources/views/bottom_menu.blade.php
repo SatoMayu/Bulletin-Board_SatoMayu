@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -27,8 +28,10 @@
   <footer>
     <div class="bottom-menu">
       <div class="d-flex">
-        <p><a href="#">HOME</a></p>
-        <p><a href="#"></a></p>
+        <p><a href="{{ route('top.show') }}">HOME</a></p>
+        <p><a href="">カテゴリー追加</a></p>
+        <p><a href="{{ route('post.create') }}">新規投稿</a></p>
+        <p><a href="#">プロフィール</a></p>
       </div>
     </div>
   </footer>
@@ -36,4 +39,5 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
+
 </html>
