@@ -13,7 +13,8 @@
 Route::namespace('User')->group(function(){
   Route::namespace('Post')->group(function(){
     Route::get('/top','PostsController@show')->name('top.show');
-    Route::get('/post/create','PostsController@postCreate')->name('post.create');
+    Route::get('/post/createForm','PostsController@post_createForm')->name('post.create.form');
+    Route::post('/post/create','PostsController@postCreate')->name('post.create');
   });
 });
 

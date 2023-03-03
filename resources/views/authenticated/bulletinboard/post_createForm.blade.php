@@ -20,6 +20,7 @@
   <input type="submit" value="投稿" form="postCreate">
 </div>
 
-<!-- <form action="{{ route('post.create') }}" method="post" id="postCreate">{{ csrf_field() }}</form> -->
+<form action="{{ route('post.create') }}" method="post" id="postCreate">{{ csrf_field() }}
+</form>
 
   @endsection
