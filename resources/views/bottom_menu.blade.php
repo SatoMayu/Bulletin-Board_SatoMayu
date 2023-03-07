@@ -29,6 +29,7 @@
     <div class="bottom-menu">
       <div class="d-flex">
         <p><a href="{{ route('top.show') }}">HOME</a></p>
+        <p><a href="/logout">ログアウト</a></p>
         <p><a href="">カテゴリー追加</a></p>
         <p><a href="{{ route('post.create.form') }}">新規投稿</a></p>
         <p><a href="#">プロフィール</a></p>

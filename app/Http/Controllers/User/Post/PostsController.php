@@ -17,11 +17,12 @@ class PostsController extends Controller
     return view('authenticated.bulletinboard.post_createForm');
   }
   public function postCreate(Request $request) {
-    dd($request);
+    // dd($request);
     $post = Post::create([
       'user_id' => Auth::id(),
       'post_title' => $request->post_title,
-      'post' => $request->post_body
+      'post' => $request->post_body,
+      
     ]);
 
     return redirect()->route('top.show');

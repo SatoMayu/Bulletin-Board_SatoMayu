@@ -18,6 +18,17 @@ Route::namespace('User')->group(function(){
   });
 });
 
+Route::namespace('Auth')->group(function(){
+  Route::namespace('Login')->group(function(){
+    Route::get('/login','LoginController@loginView')->name('loginView');
+    Route::post('login/post','LoginController@loginPost')->name('loginPost');
+    // Route::get('/logout', 'LoginController@logout');
+  });
+  Route::namespace('Register')->group(function(){
+    Route::get('register','RegisterController@registerView')->name('registerView');
+  });
+});
+
 // Route::get('/top', function () {
 //     return view('welcome');
 // });
