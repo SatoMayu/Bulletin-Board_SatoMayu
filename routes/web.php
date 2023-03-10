@@ -26,6 +26,7 @@ Route::namespace('Auth')->group(function(){
   });
   Route::namespace('Register')->group(function(){
     Route::get('register','RegisterController@registerView')->name('registerView');
+    Route::get('added','RegisterController@added')->name('added');
   });
 });
 
