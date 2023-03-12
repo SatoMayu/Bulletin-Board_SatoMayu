@@ -2,6 +2,6 @@
 
 @section('content')
 <p>登録ありがとうございます</p>
+<a href="{{ route('loginView') }}">ログイン画面へ</a>
 
-<input type="button" value="ログイン画面へ">
 @endsection

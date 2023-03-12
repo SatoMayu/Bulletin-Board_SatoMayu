@@ -36,7 +36,7 @@ use AuthenticatesUsers;
 
     public function loginPost(Request $request)
     {
-        $userdata = $request->only('mail_address', 'password');
+        $userdata = $request->only('email', 'password');
         if (Auth::attempt($userdata)) {
             return redirect('/top');
         } else {
