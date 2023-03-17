@@ -4,6 +4,7 @@
 
 <div class="post_view w-75 mt-5">
     <p class="w-75 m-auto">掲示板投稿一覧</p>
+    <p class=""> ログイン中</p>
 </div>
 <div>
     <p>さん</p>
