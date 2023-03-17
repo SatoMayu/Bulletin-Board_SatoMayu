@@ -11,7 +11,6 @@
 |
 */
 
-// 大園編集しました。
 
 Route::namespace('User')->group(function(){
   Route::namespace('Post')->group(function(){
