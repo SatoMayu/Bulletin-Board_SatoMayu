@@ -18,7 +18,17 @@ class Post extends Model
         'event_at',
     ];
 
+    protected $casts = [
+        'event_at' => 'datetime:YYYY年MM月DD日',
+    ];
+
     public function user(){
         return $this->belongsTo('App\Models\Users\User');
+    }
+
+    public function subCategories(){
+        return $this->belongsToMany(
+            'App\Models\Posts\PostSubCategory','posts_post_sub_categories','post_id','sub_category_id'
+        );
     }
 }

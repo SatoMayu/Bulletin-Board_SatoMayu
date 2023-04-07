@@ -15,7 +15,7 @@
 Route::namespace('User')->group(function(){
   Route::namespace('Post')->group(function(){
     Route::get('/top','PostsController@show')->name('top.show');
-    Route::get('/post/createForm','PostsController@post_createForm')->name('post.create.form');
+    Route::get('/post/input','PostsController@postInput')->name('post.input');
     Route::post('/post/create','PostsController@postCreate')->name('post.create');
   });
 });
@@ -24,7 +24,7 @@ Route::namespace('Auth')->group(function(){
   Route::namespace('Login')->group(function(){
     Route::get('/login','LoginController@loginView')->name('loginView');
     Route::post('login/post','LoginController@loginPost')->name('loginPost');
-    // Route::get('/logout', 'LoginController@logout');
+    Route::get('/logout', 'LoginController@logout');
   });
   Route::namespace('Register')->group(function(){
     Route::get('register','RegisterController@registerView')->name('registerView');
