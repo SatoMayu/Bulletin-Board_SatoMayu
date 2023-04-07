@@ -14,7 +14,7 @@
 
 Route::namespace('User')->group(function(){
   Route::namespace('Post')->group(function(){
-    Route::get('/top','PostsController@show')->name('top.show');
+    Route::get('/top/{keyword?}','PostsController@show')->name('top.show');
     Route::get('/post/input','PostsController@postInput')->name('post.input');
     Route::post('/post/create','PostsController@postCreate')->name('post.create');
   });

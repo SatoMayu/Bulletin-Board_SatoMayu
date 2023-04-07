@@ -10,15 +10,26 @@ use Auth;
 
 class PostsController extends Controller
 {
-  public function show(){
+  public function show(Request $request){
     $posts = Post::with('user','subCategories')->get();
-    // dd($posts);
-    return view('authenticated.bulletinboard.posts', compact('posts'));
+    $categories =
+    PostMainCategory::with('subCategories')->get();
+
+    if(!empty($request->keyword)){
+      $posts = Post::with('user')
+      ->where('title','like','%'.$request->keyword.'%')
+      ->orWhere('post','like','%'. $request->keyword.'%')->get();
+    }else if($request->category_word){
+      $sub_category = $request->category_word;
+      $posts = Post::with('user','subCategories')
+      ->whereHas('subCategories',function($q)
+      use($sub_category){
+        $q->where('sub_category',$sub_category);
+      })->get();
+    }
+    return view('authenticated.bulletinboard.posts', compact('posts','categories'));
   }
 
-  // public function post_createForm(){
-  //   return view('authenticated.bulletinboard.post_createForm');
-  // }
 
   public function postInput(){
     $main_categories = PostMainCategory::with('subCategories')->get();
@@ -28,7 +39,7 @@ class PostsController extends Controller
   public function postCreate(Request $request) {
     // dd($request);
     $d = now();
-    
+
     $post = Post::create([
       'user_id' => Auth::id(),
       'title' => $request->post_title,
