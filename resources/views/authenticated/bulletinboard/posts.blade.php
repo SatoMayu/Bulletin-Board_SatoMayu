@@ -13,7 +13,7 @@
         <p>{{ $post->user->username }}さん</p>
         <p>日付 {{ $post->event_at->format('Y年m月d日') }}</p>
         <p>view</p>
-        <p>タイトル『{{ $post->title }}』</p>
+        <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->title }}</a></p>
         <p>サブカテゴリー</p>
         @foreach($post->SubCategories as $sub_category)
         <p>{{ $sub_category->sub_category }}</p>
