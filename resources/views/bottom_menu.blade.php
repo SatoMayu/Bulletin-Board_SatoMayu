@@ -30,7 +30,7 @@
       <div class="d-flex">
         <p><a href="{{ route('top.show') }}">HOME</a></p>
         <p><a href="/logout">ログアウト</a></p>
-        <p><a href="">カテゴリー追加</a></p>
+        <p><a href="{{ route('category.input') }}">カテゴリー追加</a></p>
         <p><a href="{{ route('post.input') }}">新規投稿</a></p>
         <p><a href="#">プロフィール</a></p>
       </div>

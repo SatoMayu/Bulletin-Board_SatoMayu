@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Posts\Post;
 use App\Models\Posts\PostMainCategory;
+use App\Models\Posts\PostSubCategory;
 use Auth;
 
 class PostsController extends Controller
@@ -58,5 +59,26 @@ public function postDetail($post_id){
 
     return redirect()->route('top.show');
 
+  }
+
+  public function categoryInput(){
+    $main_categories = PostMainCategory::get();
+    return view ('authenticated.bulletinboard.category_createForm',compact('main_categories'));
+  }
+
+  public function mainCategoryCreate(Request $request){
+    PostMainCategory::create([
+      'main_category' => $request->main_category_name
+    ]);
+    return redirect()->route('category.input');
+  }
+
+  public function subCategoryCreate(Request $request){
+    // dd($request);
+    PostSubCategory::create([
+      'post_main_category_id' => $request->main_category_id,
+      'sub_category' => $request->sub_category_name
+    ]);
+    return redirect()->route('category.input');
   }
 }

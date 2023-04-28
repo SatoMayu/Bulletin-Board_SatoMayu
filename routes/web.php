@@ -18,6 +18,9 @@ Route::namespace('User')->group(function(){
     Route::get('/post/detail/{id}','PostsController@postDetail')->name('post.detail');
     Route::get('/post/input','PostsController@postInput')->name('post.input');
     Route::post('/post/create','PostsController@postCreate')->name('post.create');
+    Route::get('/category/input','PostsController@categoryInput')->name('category.input');
+    Route::post('main_category/create','PostsController@mainCategoryCreate')->name('main.category.create');
+    Route::post('sub_category/create','PostsController@subCategoryCreate')->name('sub.category.create');
   });
 });
 
