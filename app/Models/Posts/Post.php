@@ -31,4 +31,8 @@ class Post extends Model
             'App\Models\Posts\PostSubCategory','posts_post_sub_categories','post_id','sub_category_id'
         );
     }
+
+    public function postComments(){
+        return $this->hasMany('App\Model\Posts\PostComment');
+    }
 }

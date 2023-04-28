@@ -16,4 +16,12 @@ class PostComment extends Model
         'comment',
         'event_at',
     ];
+
+    public function post(){
+        return $this->belongsTo('App\Models\Posts\Post');
+    }
+
+    public function commentUser($user_id){
+        return User::where('id',$user_id)->first();
+    }
 }
