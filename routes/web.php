@@ -21,6 +21,8 @@ Route::namespace('User')->group(function(){
     Route::get('/category/input','PostsController@categoryInput')->name('category.input');
     Route::post('main_category/create','PostsController@mainCategoryCreate')->name('main.category.create');
     Route::post('sub_category/create','PostsController@subCategoryCreate')->name('sub.category.create');
+    Route::get('main_category/delete/{id}','PostsController@MainCategoryDelete')->name('main.category.delete');
+    Route::get('sub_category/delete/{id}','PostsController@SubCategoryDelete')->name('sub.category.delete');
   });
 });
 

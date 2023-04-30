@@ -62,10 +62,12 @@ public function postDetail($post_id){
   }
 
   public function categoryInput(){
-    $main_categories = PostMainCategory::get();
+    $main_categories = PostMainCategory::with('subCategories')->get();
+
     return view ('authenticated.bulletinboard.category_createForm',compact('main_categories'));
   }
 
+  // ↓↓まとめられそう？？↓↓
   public function mainCategoryCreate(Request $request){
     PostMainCategory::create([
       'main_category' => $request->main_category_name
@@ -79,6 +81,17 @@ public function postDetail($post_id){
       'post_main_category_id' => $request->main_category_id,
       'sub_category' => $request->sub_category_name
     ]);
+    return redirect()->route('category.input');
+  }
+  // ↑↑まとめられそう？？↑↑
+
+  public function MainCategoryDelete($id){
+    PostMainCategory::findOrFail($id)->delete();
+    return redirect()->route('category.input');
+  }
+
+  public function SubCategoryDelete($id){
+    PostSubCategory::findOrFail($id)->delete();
     return redirect()->route('category.input');
   }
 }

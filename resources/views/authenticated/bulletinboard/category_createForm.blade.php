@@ -28,4 +28,33 @@
     <input type="submit" value="登録" form="subCategoryRequest">
   </form>
 </div>
+
+<div>
+  <h3>カテゴリー一覧</h3>
+  <ul>
+    @foreach($main_categories as $main_category)
+    <li>
+      <div>
+        <label>{{ $main_category->main_category }}</label>
+        <!-- ↓↓isEmpty()…値が存在するかどうかを確認するメソッド -->
+        @if($main_category->subCategories->isEmpty())
+        <a href="{{ route('main.category.delete',['id' => $main_category->id]) }}">削除</a>
+        @endif
+      </div>
+    </li>
+    <ul>
+      @foreach($main_category->subCategories as $sub_category)
+      <li>
+        <div>
+          <label for="">{{ $sub_category->sub_category }}</label>
+          @if($sub_category->posts->isEmpty())
+          <a href="{{ route('sub.category.delete',['id' => $sub_category->id]) }}">削除</a>
+          @endif
+        </div>
+      </li>
+      @endforeach
+    </ul>
+    @endforeach
+  </ul>
+</div>
 @endsection
