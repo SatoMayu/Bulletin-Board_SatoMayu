@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Posts\Post;
+use App\Models\Posts\PostComment;
 use App\Models\Posts\PostMainCategory;
 use App\Models\Posts\PostSubCategory;
 use Auth;
@@ -85,13 +86,27 @@ public function postDetail($post_id){
   }
   // ↑↑まとめられそう？？↑↑
 
-  public function MainCategoryDelete($id){
+  public function mainCategoryDelete($id){
     PostMainCategory::findOrFail($id)->delete();
     return redirect()->route('category.input');
   }
 
-  public function SubCategoryDelete($id){
+  public function subCategoryDelete($id){
     PostSubCategory::findOrFail($id)->delete();
     return redirect()->route('category.input');
   }
+
+  public function commentCreate(Request $request)
+  {
+    // dd($request);
+    $d = now();
+    PostComment::create([
+      'user_id' => Auth::id(),
+      'post_id' => $request->post_id,
+      'comment' => $request->comment_body,
+      'event_at' => $d
+    ]);
+    return redirect()->route('post.detail', ['id' => $request->post_id]);
+  }
+
 }

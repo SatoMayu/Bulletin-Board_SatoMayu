@@ -16,13 +16,16 @@ Route::namespace('User')->group(function(){
   Route::namespace('Post')->group(function(){
     Route::get('/top/{keyword?}','PostsController@show')->name('top.show');
     Route::get('/post/detail/{id}','PostsController@postDetail')->name('post.detail');
+    Route::get('/comment/create','PostsController@commentCreate')->name('comment.create');
+    Route::post('/comment/create','PostsController@commentCreate')->name('comment.create');
     Route::get('/post/input','PostsController@postInput')->name('post.input');
     Route::post('/post/create','PostsController@postCreate')->name('post.create');
     Route::get('/category/input','PostsController@categoryInput')->name('category.input');
     Route::post('main_category/create','PostsController@mainCategoryCreate')->name('main.category.create');
     Route::post('sub_category/create','PostsController@subCategoryCreate')->name('sub.category.create');
-    Route::get('main_category/delete/{id}','PostsController@MainCategoryDelete')->name('main.category.delete');
-    Route::get('sub_category/delete/{id}','PostsController@SubCategoryDelete')->name('sub.category.delete');
+    Route::get('main_category/delete/{id}','PostsController@mainCategoryDelete')->name('main.category.delete');
+    Route::get('sub_category/delete/{id}','PostsController@subCategoryDelete')->name('sub.category.delete');
+
   });
 });
 
