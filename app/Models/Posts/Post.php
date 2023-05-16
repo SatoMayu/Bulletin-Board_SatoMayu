@@ -33,6 +33,6 @@ class Post extends Model
     }
 
     public function postComments(){
-        return $this->hasMany('App\Model\Posts\PostComment');
+        return $this->hasMany('App\Models\Posts\PostComment');
     }
 }

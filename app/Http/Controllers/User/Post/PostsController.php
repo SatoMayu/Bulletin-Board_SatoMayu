@@ -33,7 +33,7 @@ class PostsController extends Controller
   }
 
 public function postDetail($post_id){
-  $post = Post::with('user','subCategories')->findOrFail($post_id);
+  $post = Post::with('user','subCategories','postComments')->findOrFail($post_id);
   return view('authenticated.bulletinboard.post_detail',compact('post'));
 }
 
@@ -96,17 +96,5 @@ public function postDetail($post_id){
     return redirect()->route('category.input');
   }
 
-  public function commentCreate(Request $request)
-  {
-    // dd($request);
-    $d = now();
-    PostComment::create([
-      'user_id' => Auth::id(),
-      'post_id' => $request->post_id,
-      'comment' => $request->comment_body,
-      'event_at' => $d
-    ]);
-    return redirect()->route('post.detail', ['id' => $request->post_id]);
-  }
 
 }

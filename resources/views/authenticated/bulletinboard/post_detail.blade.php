@@ -17,7 +17,14 @@
     <p>コメント数</p>
     <p>いいね数</p>
   </div>
-  
+
+  <div>
+    @foreach($post->postComments as $comment)
+      <p>{{ $comment->commentUser($comment->user_id)->username }}</p>
+      <p>{{ $comment->comment }}</p>
+    @endforeach
+  </div>
+
   <div>
     <form action="{{ route('comment.create') }}" id="commentRequest" method="post">
       {{ csrf_field() }}
